@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <conio.h>
+
+char s[16];
+int n,k;
+
+int check()
+{
+    int Count1=0,Count2=0,i;
+    for(i=0;i<n;i++)
+    {
+        if(s[i]=='A') Count1++;
+        else Count1=0;
+        if(Count1==k) Count2++;
+        if(Count1>k) return 0;
+    }
+    if(Count2==1) return 1;
+    else return 0;
+}
+void Print()
+{
+    if(check())
+        printf("%s\n",s);
+    return;
+}
+void Try(int x)
+{
+    int i;
+    for(i='A';i<='B';i++)
+    {
+        s[x]=i;
+        if(x==n-1)
+        {
+            Print();
+        }
+        else Try(x+1);
+    }
+}
+int main()
+{
+    printf("Nhap n,k\n");
+    scanf("%d%d",&n,&k);
+    Try(0);
+    return 0;
+}
